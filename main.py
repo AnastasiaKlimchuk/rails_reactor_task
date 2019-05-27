@@ -8,7 +8,6 @@ args = parser.parse_args()
 
 
 result = magicbox.run_magic(args.path)
-print(result)
 # try:
 #     result = magicbox.run_magic(args.path)
 #     print(result)

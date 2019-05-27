@@ -3,6 +3,8 @@ import numpy
 from PIL import Image
 import glob
 import imageComparator
+import imageSignature
+
 
 def run_magic(path):
     if not os.path.exists(path):
@@ -13,14 +15,16 @@ def run_magic(path):
         im = Image.open(filename)
         images.append(im)
 
+    signatures = []
+    for image in images:
+        signatures.append(imageSignature.generate(image))
+
+    print(signatures)
     output = []
-    for i in range(len(images)-1):
-        for j in range(i+1, len(images)-1):
-            res = imageComparator.compare(images[i], images[j])
+    for i in range(len(signatures)-1):
+        for j in range(i+1, len(signatures)-1):
+            res = imageComparator.compare(signatures[i], signatures[j])
             if res:
                 output.append((images[i].filename, images[j].filename))
-            # images[i].filename
-            # print(res)
-    print(output)
     return output
 
