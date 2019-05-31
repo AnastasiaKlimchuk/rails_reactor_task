@@ -1,5 +1,5 @@
 import argparse
-import magicbox
+import image_comparator
 
 
 parser = argparse.ArgumentParser(description='First test task on images similarity.')
@@ -7,10 +7,13 @@ parser.add_argument('--path', help='folder with image', required=True)
 args = parser.parse_args()
 
 
-result = magicbox.run_magic(args.path)
-# try:
-#     result = magicbox.run_magic(args.path)
-#     print(result)
-# except Exception as error:
-#     print(error)
+try:
+
+    result = image_comparator.run_magic(args.path)
+
+    for item in result:
+        print(item[0], item[1])
+
+except Exception as error:
+    print(error)
 

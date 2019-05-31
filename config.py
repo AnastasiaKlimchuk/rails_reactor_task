@@ -9,7 +9,9 @@
 """
 n = 9
 identical_tolerance = 2/255
-n_levels = 2
+n_levels = 10
 crop_percentiles = (5, 95)
 lower_percentile = 0
 upper_percentile = 100
+threshold = 0.4
+
